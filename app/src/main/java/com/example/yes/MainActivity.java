@@ -9,8 +9,25 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
+
+    static final String URL= "https://markmscott-slapbot-v1.p.rapidapi.com";
+    static final String KEY = "1fd185e537msh7414c648afee800p11eb5cjsn84ad689bfa4f";
+    static final String HOST = "markmscott-slapbot-v1.p.rapidapi.com";
     /**
      * Group of buttons to determine state of activity.
      */
@@ -20,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private LinearLayout statusCheck = findViewById(R.id.feedback);
 
-    private TextView stateOfDoing = findViewById(R.id.state);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Runs when either clap or slap is clicked.
-     * @param working
+     * @param clap if clap clicked, else slap
      */
     private void ifClicked(boolean clap) {
         //switches to other layout
@@ -46,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         //Set up this page
         TextView status = findViewById(R.id.state);
         Button back = findViewById(R.id.back);
-        //Back button swaps viewa
+        //Back button swaps views
         back.setOnClickListener(unused -> {
             activity.setVisibility(View.VISIBLE);
             statusCheck.setVisibility(View.GONE);
@@ -56,13 +72,59 @@ public class MainActivity extends AppCompatActivity {
             //Green background
             statusCheck.setBackgroundColor(Color.GREEN);
             //Retrieve complement
-            status.setText(Generate.complementBlock());
+            JsonArrayRequest clapRequest = new JsonArrayRequest(Request.Method.GET, URL + "/Appreciate", null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    //Work with response JSONArray
+                    try {
+                        JSONObject obj = response.getJSONObject(0);
+                        status.setText(obj.getString("description"));
+                    } catch (JSONException j) {
+
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("X-RapidAPI-Key", KEY);
+                    params.put("X-RapidAPI-Host", HOST);
+                    return params;
+                }
+            };
         //The code below should run when lazy button is clicked
         } else {
             //Red background
             statusCheck.setBackgroundColor(Color.RED);
             //Retrieve complement
-            status.setText(Generate.insultBlock());
+            JsonArrayRequest slapRequest = new JsonArrayRequest(Request.Method.GET, URL + "/Slap", null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    //Work with response JSONArray
+                    try {
+                        JSONObject obj = response.getJSONObject(0);
+                        status.setText(obj.getString("description"));
+                    } catch (JSONException j) {
+
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }) {
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("X-RapidAPI-Key", KEY);
+                    params.put("X-RapidAPI-Host", HOST);
+                    return params;
+                }
+            };
         }
     }
 }
