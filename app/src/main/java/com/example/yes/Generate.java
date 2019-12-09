@@ -1,7 +1,7 @@
 package com.example.yes;
 
 public class Generate {
-
+    //static final String API_BASE= "https://markmscott-slapbot-v1.p.rapidapi.com";
     /**
      *
      * @return the Web API insult
