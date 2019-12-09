@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout statusCheck = findViewById(R.id.feedback);
         activity.setVisibility(View.VISIBLE);
         statusCheck.setVisibility(View.GONE);
-        finish();
+        //REMOVED: finish();
         //Set up individual buttons.
         Button clap = findViewById(R.id.clap);
         Button slap = findViewById(R.id.slap);
