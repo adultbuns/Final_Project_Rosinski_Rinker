@@ -26,7 +26,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/stuff"
+        android:id="@+id/buttons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="250dp"
@@ -34,16 +34,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/work"
+            android:id="@+id/clap"
             android:layout_width="match_parent"
             android:layout_height="121dp"
-            android:text="I'm working" />
+            android:text="Clap" />
 
         <Button
-            android:id="@+id/lazy"
+            android:id="@+id/slap"
             android:layout_width="match_parent"
             android:layout_height="125dp"
-            android:text="I'm lazy" />
+            android:text="Slap" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

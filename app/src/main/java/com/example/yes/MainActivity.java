@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Group of buttons to determine state of activity.
      */
-    private LinearLayout activity = findViewById(R.id.stuff);
+    private LinearLayout activity = findViewById(R.id.buttons);
     /**
      * The display of what the user is currently doing. Yeah.
      */
@@ -29,17 +29,17 @@ public class MainActivity extends AppCompatActivity {
         statusCheck.setVisibility(View.GONE);
         finish();
         //Set up individual buttons.
-        Button work = findViewById(R.id.work);
-        Button lazy = findViewById(R.id.lazy);
-        work.setOnClickListener(unused -> ifClicked(true));
-        lazy.setOnClickListener(unused -> ifClicked(false));
+        Button clap = findViewById(R.id.clap);
+        Button slap = findViewById(R.id.slap);
+        clap.setOnClickListener(unused -> ifClicked(true));
+        slap.setOnClickListener(unused -> ifClicked(false));
     }
 
     /**
-     * Runs when either working or lazy is clicked.
+     * Runs when either clap or slap is clicked.
      * @param working
      */
-    private void ifClicked(boolean working) {
+    private void ifClicked(boolean clap) {
         //switches to other layout
         activity.setVisibility(View.GONE);
         statusCheck.setVisibility(View.VISIBLE);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             statusCheck.setVisibility(View.GONE);
         });
         //The code below should run when working is clicked
-        if (working) {
+        if (clap) {
             //Green background
             statusCheck.setBackgroundColor(Color.GREEN);
             //Retrieve complement
