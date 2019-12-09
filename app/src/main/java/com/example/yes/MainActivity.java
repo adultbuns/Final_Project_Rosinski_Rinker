@@ -28,19 +28,13 @@ public class MainActivity extends AppCompatActivity {
     static final String URL= "https://markmscott-slapbot-v1.p.rapidapi.com";
     static final String KEY = "1fd185e537msh7414c648afee800p11eb5cjsn84ad689bfa4f";
     static final String HOST = "markmscott-slapbot-v1.p.rapidapi.com";
-    /**
-     * Group of buttons to determine state of activity.
-     */
-    private LinearLayout activity = findViewById(R.id.buttons);
-    /**
-     * The display of what the user is currently doing. Yeah.
-     */
-    private LinearLayout statusCheck = findViewById(R.id.feedback);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        LinearLayout activity = findViewById(R.id.buttons);
+        LinearLayout statusCheck = findViewById(R.id.feedback);
         activity.setVisibility(View.VISIBLE);
         statusCheck.setVisibility(View.GONE);
         finish();
@@ -57,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private void ifClicked(boolean clap) {
         //switches to other layout
+        LinearLayout activity = findViewById(R.id.buttons);
+        LinearLayout statusCheck = findViewById(R.id.feedback);
         activity.setVisibility(View.GONE);
         statusCheck.setVisibility(View.VISIBLE);
         //Set up this page
