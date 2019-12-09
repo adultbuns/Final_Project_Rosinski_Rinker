@@ -37,10 +37,7 @@ public final class WebApi {
     private static final String TAG = "WebApi";
 
     /** The URL at which the complement server is hosted. */
-    static final String API_BASE = "https://markmscott-slapbot-v1.p.rapidapi.com/Appreciate";
-
-    /** The URL at which the insult server is hosted. */
-    static final String API_BASE_INSULT = "https://lakerolmaker-insult-generator-v1.p.rapidapi.com/?mode=random";
+    static final String API_BASE= "https://markmscott-slapbot-v1.p.rapidapi.com";
 
     /** The URL at which the webserver socket is hosted. */
     static final String WEBSOCKET_BASE = "wss://cs125-cloud.cs.illinois.edu/Fall2019-MP";
