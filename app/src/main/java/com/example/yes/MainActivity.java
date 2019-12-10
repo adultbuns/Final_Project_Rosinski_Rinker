@@ -58,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         //switches to other layout
         LinearLayout activity = findViewById(R.id.buttons);
         LinearLayout statusCheck = findViewById(R.id.feedback);
-        activity.setVisibility(View.GONE);
-        statusCheck.setVisibility(View.VISIBLE);
+
         //Set up this page
         TextView status = findViewById(R.id.state);
         Button back = findViewById(R.id.back);
@@ -80,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject obj = response.getJSONObject(0);
                         status.setText(obj.getString("description"));
+                        activity.setVisibility(View.GONE);
+                        statusCheck.setVisibility(View.VISIBLE);
                         //status.setText("GREEN SUCCESS");
                     } catch (JSONException j) {
                         status.setText("GREEN_OOF1");
@@ -111,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject obj = response.getJSONObject(0);
                         status.setText(obj.getString("description"));
+                        activity.setVisibility(View.GONE);
+                        statusCheck.setVisibility(View.VISIBLE);
                         //status.setText("RED SUCCESS");
                     } catch (JSONException j) {
                         status.setText("RED_OOF1");

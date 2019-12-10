@@ -15,8 +15,12 @@
         <TextView
             android:id="@+id/state"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:text="TextView" />
+            android:layout_height="237dp"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="What you're looking for is generating shortly."
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/back"
