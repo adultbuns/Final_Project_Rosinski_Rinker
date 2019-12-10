@@ -87,13 +87,13 @@ public class MainActivity extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    status.setText("GREEN_OOF2");
+                    status.setText(error.toString());
                 }
             }) {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("x-rapidapi-key", KEY);
-                    params.put("x-rapidapi-host", HOST);
+                    params.put("X-RapidAPI-Key", KEY);
+                    params.put("X-RapidAPI-Host", HOST);
                     return params;
                 }
             };
