@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     static final String KEY = "1fd185e537msh7414c648afee800p11eb5cjsn84ad689bfa4f";
     static final String HOST = "markmscott-slapbot-v1.p.rapidapi.com";
     static final String SLAPURL = "https://markmscott-slapbot-v1.p.rapidapi.com/Slap?maxrecords=Specifying%20a%20MaxRecords%20against%20the%20MaxRecords%20parameter%20will%20increase%20the%20number%20of%20rows%20returned%20by%20the%20Call%20to%20the%20value%20presented.%20Where%20the%20values%20can%20be%20any%20positive%20number%20less%20than%20or%20equal%20to%2050.%20The%20default%20value%20is%201.";
-    static final String CLAPURL = "https://markmscott-slapbot-v1.p.rapidapi.com/Appreciate?maxrecords=10&requirepictures=0";
+    static final String CLAPURL = "https://markmscott-slapbot-v1.p.rapidapi.com/Appreciate";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject obj = response.getJSONObject(0);
                         status.setText(obj.getString("description"));
-                        status.setText("GREEN SUCCESS");
+                        //status.setText("GREEN SUCCESS");
                     } catch (JSONException j) {
                         status.setText("GREEN_OOF1");
                     }
@@ -92,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
             }) {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("X-RapidAPI-Key", KEY);
-                    params.put("X-RapidAPI-Host", HOST);
+                    params.put("x-rapidapi-key", KEY);
+                    params.put("x-rapidapi-host", HOST);
                     return params;
                 }
             };
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject obj = response.getJSONObject(0);
                         status.setText(obj.getString("description"));
-                        status.setText("RED SUCCESS");
+                        //status.setText("RED SUCCESS");
                     } catch (JSONException j) {
                         status.setText("RED_OOF1");
                     }
